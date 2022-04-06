@@ -4,10 +4,12 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.logging.LogManager;
 import java.util.logging.Logger;
+import java.util.zip.CheckedOutputStream;
 
 public class Timer {
 	
 	private static Logger logger = Logger.getLogger(Timer.class.getName());
+
 	
 	static {
 		try {
@@ -19,6 +21,7 @@ public class Timer {
 		    System.out.println("WARNING: Logging not configured (console output only)");
 		}
 		logger.info("starting the app");
+	
 	}
 	
 	/*
@@ -29,12 +32,14 @@ public class Timer {
 	}
 	
 	public static long timeMe(long timeToWait) throws TimerException {
-		Long timeNow = null;
+		//Long timeNow = System.currentTimeMillis();
+		Long timeNow =  System.currentTimeMillis();
 		try {
 		  if (timeToWait < 0) {
 			  throw new TimerException("Cannot be less than zero");
+			  
 		  }
-	      timeNow = System.currentTimeMillis();
+	     
 		  method(timeToWait);
 			
 		} catch (InterruptedException e) {
